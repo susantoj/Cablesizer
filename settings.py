@@ -1,24 +1,5 @@
 # Django settings for myproject project.
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
-ADMINS = (
-     ('Jules', 'contact@cablesizer.com'),
-)
-
-MANAGERS = ADMINS
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'susantojd_sizer',                      # Or path to database file if using sqlite3.
-        'USER': 'susantojd_sizer',                      # Not used with sqlite3.
-        'PASSWORD': '426c274e',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -45,12 +26,12 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/home/susantojd/webapps/static/'
+MEDIA_ROOT = ''
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = 'http://cablesizer.com/static/'
+MEDIA_URL = '/static/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -106,7 +87,6 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/home/susantojd/webapps/django/myproject/templates/",
 )
 
 INSTALLED_APPS = (
@@ -153,8 +133,4 @@ LOGGING = {
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 3600
 
-EMAIL_HOST = 'smtp.webfaction.com'
-EMAIL_HOST_USER = 'susantojd_cablesizer'
-EMAIL_HOST_PASSWORD = 'speakmen70'
-DEFAULT_FROM_EMAIL = 'feedback@cablesizer.com'
-SERVER_EMAIL = 'feedback@cablesizer.com'
+from localsettings import *
