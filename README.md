@@ -15,7 +15,7 @@ Bug tracker
 
 Have a bug? Please create an issue here on GitHub!
 
-https://github.com/twitter/bootstrap/issues
+https://github.com/susantoj/Cablesizer/issues
 
 
 Author
