@@ -11,7 +11,7 @@ To see a working implementation -- check out http://cablesizer.com
 
 
 Bug tracker
------------
+===========
 
 Have a bug? Please create an issue here on GitHub!
 
@@ -19,7 +19,7 @@ https://github.com/twitter/bootstrap/issues
 
 
 Author
-------
+======
 
 **Julius Susanto**
 
