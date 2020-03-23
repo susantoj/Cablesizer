@@ -140,11 +140,11 @@ $(document).ready(function() {
                 <p>Full load current: {{ load_amps }} A </p>
                 <p>For a {{ selectedsize_query }} {% if metric_size > 110 %}kcmil{% else %}AWG{% endif %} {{ cond_query }}, {{ nocores_query }} Core cable of length {{ cablerun_query }} ft: </p>
                 <fieldset>
-                <p>The {% if phases_query = "3" %}three-phase{% else %}single phase{% endif %} voltage drop is: {{ volt_drop }} V </p>
+                <p>The {% if phases_query == "3" %}three-phase{% else %}single phase{% endif %} voltage drop is: {{ volt_drop }} V </p>
                 <p>(Equivalent to {{ percent_drop }} % of nominal voltage {{ volt_query }} V)</p>
                 </fieldset>
             {% else %}
-                <p>Voltage drop could not be calculated (<a href="../help/" target="_blank">help!</a>)</p>
+                <p>Voltage drop could not be calculated (<a href="/help/" target="_blank">help!</a>)</p>
             {% endif %}
         </fieldset>
     {% endif %}

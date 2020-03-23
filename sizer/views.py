@@ -1,10 +1,9 @@
 from django.http import HttpResponseRedirect
-from django.core.context_processors import csrf
+from django.template.context_processors import csrf
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from django.db.models import Q
-from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from sizer.models import CableData
 from sizer.models import IecDerating
 from sizer.models import IecAmpacity
@@ -14,7 +13,8 @@ from sizer.models import EmailList
 from datetime import datetime
 from decimal import *
 from math import *
-    
+
+
 # Main calculation view
 # Templates: 'ampacity', 'voltdrop', 'sctemprise'
 def main(request, template_name):
@@ -31,7 +31,7 @@ def main(request, template_name):
     # #######################
     
     # On page load, get session cookies or set default values for first level
-    if (request.method <> 'POST'):
+    if (request.method != 'POST'):
         if "volts" in request.session:
             volt_query = request.session["volts"]
         else:
@@ -200,7 +200,7 @@ def main(request, template_name):
             request.session["final_temp"] = finaltemp_query
         
     # Second level cookie retrieval for ampacity template
-    if (request.method <> 'POST') or (request.POST.__contains__('refmethod_update')):
+    if (request.method != 'POST') or (request.POST.__contains__('refmethod_update')):
         if "amb_temp" in request.session:
             ambtemp_query = request.session["amb_temp"]
         else:
@@ -436,7 +436,7 @@ def main(request, template_name):
     # test_cable.save()
     
     html_template = '%s.html' % template_name
-    return render_to_response(html_template, locals(), context_instance = RequestContext(request))
+    return render(request, html_template, locals())
     
 # Report page
 def report(request):
@@ -552,4 +552,4 @@ def report(request):
     else:
         show_report = []
     
-    return render_to_response('report.html', locals())
+    return render(request, 'report.html', locals())

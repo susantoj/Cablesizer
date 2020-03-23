@@ -1,23 +1,26 @@
+from datetime import datetime
 from django.http import HttpResponseRedirect
-from django.core.context_processors import csrf
+from django.template.context_processors import csrf
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from django.db.models import Q
 from django.template import RequestContext
-from django.shortcuts import render_to_response
-from datetime import datetime
+from django.shortcuts import render
+
+from sizer.models import EmailList
+
 
 # Index page (redirect)
 def index(request):
-    return render_to_response('home.htm')
+    return render(request, 'home.htm')
 
 # Help page
 def help(request):  
-    return render_to_response('help.html')
+    return render(request, 'help/help.html')
 
 # About page
 def about(request):  
-    return render_to_response('about.html')
+    return render(request, 'about.html')
 
 # Feedback page
 def feedback(request):  
@@ -29,7 +32,7 @@ def feedback(request):
     ['julius.susanto@gmail.com'], fail_silently=True)
         show_message = 1
     
-    return render_to_response('feedback.html', locals(), context_instance = RequestContext(request))
+    return render(request, 'feedback.html', locals())
     
 # Upgrade page
 def upgrade(request):
@@ -42,21 +45,19 @@ def upgrade(request):
         email_add.save()
         show_message = 1
     
-    return render_to_response('upgrade.html', locals(), context_instance = RequestContext(request))
+    return render(request, 'upgrade.html', locals())
     
 # Disclaimer page
 def disclaimer(request):  
-    return render_to_response('disclaimer.html')
+    return render(request, 'disclaimer.html')
 
 # New cable page
 def new(request):
     if (request.method == 'GET'):
-        
-        for sesskey in request.session.keys():
-            del request.session[sesskey]
-            
+        request.session.clear()
+
         request.session["volts"] = 400
         request.session["load_kw"] = 30
         request.session["pf"] = 0.8
         request.session["eff"] = 0.9
-    return render_to_response('new.html')
+    return render(request, 'new.html')
