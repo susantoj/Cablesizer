@@ -1,13 +1,14 @@
-from django.conf.urls.defaults import *
+from django.urls import path
+from . import views
 
-urlpatterns = patterns('help.views', 
-    (r'^$', 'help'),
-    (r'^getting_started/', 'get_started'),
-    (r'^principles/', 'principles'),
-    (r'^nec_tutorial/', 'nec_tutorial'),
-    (r'^iec_tutorial/', 'iec_tutorial'),
-    (r'^nec_cabletypes/', 'nec_cabletypes'),
-    (r'^iec_refmethods/', 'iec_refmethods'),
-    (r'^tech_notes/', 'tech_notes'),
-    (r'^troubleshooting/', 'troubleshooting'),
-)
+urlpatterns = [
+    path('', views.help),
+    path('getting_started/', views.get_started),
+    path('principles/', views.principles),
+    path('nec_tutorial/', views.nec_tutorial),
+    path('iec_tutorial/', views.iec_tutorial),
+    path('nec_cabletypes/', views.nec_cabletypes),
+    path('iec_refmethods/', views.iec_refmethods),
+    path('tech_notes/', views.tech_notes),
+    path('troubleshooting/', views.troubleshooting),
+]

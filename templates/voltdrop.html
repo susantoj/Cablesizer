@@ -98,7 +98,7 @@ $(document).ready(function() {
             {% if volt_drop %}
                 <p>For a {{ selectedsize_query }} mm<sup>2</sup> {{ cond_query }}, {{ insulation_query }}, {{ nocores_query }} Core cable of length {{ cablerun_query }} m: </p>
                 <fieldset>
-                <p>The {% if phases_query = "3" %}three-phase{% else %}single phase{% endif %} voltage drop is: {{ volt_drop }} V </p>
+                <p>The {% if phases_query == "3" %}three-phase{% else %}single phase{% endif %} voltage drop is: {{ volt_drop }} V </p>
                 <p>(Equivalent to {{ percent_drop }} % of nominal voltage {{ volt_query }} V)</p>
                 </fieldset>
             {% else %}
